@@ -175,7 +175,7 @@ summary{cursor:pointer;font-size:13px;font-weight:600;padding:6px 0;color:#37415
 
 <script>
 // ── Constants ────────────────────────────────────────────────────────────────
-const PROXY = 'https://llm-proxy.futuoa.com/v1/chat/completions';
+const PROXY = '/api/generate';
 
 const SYSTEM_PROMPT = `你是一个专业的内容创作专家，精通各类平台的文案写作风格，包括：小红书、微博、朋友圈、公众号，以及 moomoo 投资社区（英文金融内容）。
 
@@ -367,9 +367,9 @@ async function generate() {
         'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
+        apiKey,
         model: 'claude-opus-4-6',
         max_tokens: 4096,
-        stream: true,
         messages: [
           { role: 'system', content: SYSTEM_PROMPT },
           { role: 'user', content: userMsg },
